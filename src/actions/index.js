@@ -14,7 +14,7 @@ export const removeFromFavoriteCompanyAction = (index) => ({
 export const addToFavoriteCompanyThunk = (companyToAdd) => {
   return async (dispatch, getState) => {
     dispatch({
-      type: 'ADD_Jobs_To_favorite',
+      type: 'ADD_Companies_To_favorite',
       payload: companyToAdd,
     })
   }
@@ -23,7 +23,7 @@ export const addToFavoriteCompanyThunk = (companyToAdd) => {
 export const removeFromFavoriteCompanyThunk = (index) => {
   return async (dispatch, getState) => {
     dispatch({
-      type: 'Remove_Jobs_From_favorite',
+      type: 'Remove_Companies_From_favorite',
       payload: index,
     })
   }
@@ -45,7 +45,7 @@ export const fillJobsAction = () => {
         })
         dispatch({
           type: 'FILL_Jobs',
-          payload: jobs,
+          payload: jobs.data,
         })
       } else {
         console.log('error')

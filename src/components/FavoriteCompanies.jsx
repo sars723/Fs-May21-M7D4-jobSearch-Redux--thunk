@@ -6,7 +6,7 @@ import { removeFromFavoriteCompanyThunk } from "../actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = (state) => ({
-  companies: state.favoriteCompanies.companies,
+  companies: state.favoriteCompany.companies,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -33,8 +33,8 @@ const FavoriteCompanies = ({
                 <FaTrash />
               </Button>
 
-              <p onClick={() => history.push("/jobDetails", location.state)}>
-                {company}
+              <p onClick={() => history.push("/jobDetails", company)}>
+                {company.company_name}
               </p>
             </li>
           ))}

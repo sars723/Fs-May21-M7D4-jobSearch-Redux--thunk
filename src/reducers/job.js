@@ -6,7 +6,7 @@ const jobReducer = (state = initialState.job, action) => {
       return {
         ...state,
         
-         jobs: [...state.jobs, action.payload],
+         jobs: [...state.jobs, ...action.payload],
         
       }
     case 'Remove_Jobs':
@@ -16,13 +16,13 @@ const jobReducer = (state = initialState.job, action) => {
           jobs: state.jobs.filter((company, i) => i !== action.payload),
         
       }
-      case 'FILL_Job_LOADING':
+      case 'FILL_Jobs_LOADING':
         return {
           ...state,
           loading: action.payload,
         }
   
-      case 'FILL_Job_ERROR':
+      case 'FILL_Jobs_ERROR':
         return {
           ...state,
           error: action.payload,

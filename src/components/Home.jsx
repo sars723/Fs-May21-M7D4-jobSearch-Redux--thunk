@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import JobList from "./JobList";
 import { connect } from "react-redux";
 import { fillJobsAction } from "../actions";
+import { Alert, Spinner } from "react-bootstrap";
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
@@ -58,10 +59,18 @@ const Home = (props) => {
   }, []);
   return (
     <div className="mt-5">
-      {console.log(props.job.jobs[0].data[0])}
-      {props.job.jobs[0].data.map((job) => (
-        <JobList key={job._id} job={job} />
-      ))}
+      {props.job.error ? (
+        <Alert variant="danger">SOMETHING WENT WRONG!</Alert>
+      ) : props.job.loading ? (
+        <Spinner animation="border" variant="success" />
+      ) : (
+        <>
+          {console.log("jobs from state", props.job.jobs)}
+          {props.job.jobs.map((job) => (
+            <JobList key={job._id} jobb={job} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
